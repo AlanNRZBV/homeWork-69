@@ -2,13 +2,11 @@ import { Form, InputGroup } from 'react-bootstrap';
 import { AppDispatch, RootState } from '../../app/store.ts';
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
-import { takeInput } from './searchSlice.tsx';
+import { takeInput } from './searchSlice.ts';
 
 const Search = () => {
   const dispatch: AppDispatch = useDispatch()
   const inputTest = useSelector((state: RootState)=>state.search.input)
-
-
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>)=>{
     dispatch(takeInput(e.target.value))
