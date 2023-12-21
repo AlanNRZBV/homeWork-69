@@ -11,6 +11,9 @@ interface ShowState {
   premiered: string,
   isLoading: boolean,
 }
+
+export interface Show extends ShowState{}
+
 const initialState: ShowState = {
   id: 0,
   url:'',
