@@ -9,10 +9,12 @@ export const fetchShows = createAsyncThunk<void,string,{state: RootState}>(
       const response = await axiosApi.get(arg)
       if (response.data !== null){
         for (let i = 0; i < response.data.length;i++){
-          const name = response.data[i].show.name
-          thunkAPI.dispatch(autocompleteSlice.actions.addShowName(name))
+          const newShow:{id:number, name:string} = {
+            id: response.data[i].show.id,
+            name: response.data[i].show.name
+          }
+          thunkAPI.dispatch(autocompleteSlice.actions.addShowName(newShow))
         }
-        console.log(response.data)
       }
     }catch (error){
       console.log('Caught on try - FETCH SHOWS - ', error)
